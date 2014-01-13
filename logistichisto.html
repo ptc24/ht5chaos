@@ -1,0 +1,52 @@
+<html>
+<head><title>Logistic Map Pixmap</title></head>
+<!--<style>
+   body {
+    margin:0px;
+    padding:0px;
+    text-align:center;
+  }
+
+  canvas{
+    outline:0;
+    border:1px solid #000;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  </style>-->
+  </head>
+  <body>
+  	<h1>Logistic Map Histograms and Bifurcation Diagram</h1>
+    <canvas id='canvas'></canvas>
+	<p id="status">Status</p>
+	<p><input type="button" value="Reset" onclick="reset()"></input></p>
+	<p>Width: <input type="text" id="gwidth" value="800" size="5"></input>
+	Height: <input type="text" id="gheight" value="200" size="5"></input>
+	Histogram Height: <input type="text" id="hheight" value="100" size="5"></input>
+	Data point intensity (0-1): <input type="text" id="intensity" value="0.1" size="5"></input></p>
+	<p>
+	Iterations: <input type="text" id="iterations" value="100" size="6"></input>
+	Data points per r: <input type="text" id="points" value="1000" size="6"></input>
+	Min r: <input type="text" id="minr" value="0.0" size="13"></input>
+	Max r: <input type="text" id="maxr" value="4.0" size="13"></input>
+	Min x displayed: <input type="text" id="minx" value="0.0" size="13"></input>
+	Max x displayed: <input type="text" id="maxx" value="1.0" size="13"></input></p>
+	<p><b>Histogram</b> - click the bifurcation diagram to display</p>
+	<p><canvas id='hcanvas'></canvas></p>
+	<p>Another view of <a href="http://en.wikipedia.org/wiki/Logistic_map">logistic map</a> - 
+	the iteration of
+	<i>x</i><sub><i>n</i>+1</sub> = <i>rx<sub>n</sub></i>(1-<i>x<sub>n</sub></i>)</p>
+	<p>This version displays the results of doing lots of iterations from random values of
+	<i>x</i><sub>0</sub> (chosen from a uniform distribution 0-1). The final value (after
+	the specified number of iterations) is plotted on the chart. The x-axis represents r,
+	and the y-axis represents the value of x reached. Essentially, each column
+	of the chart acts like a histogram, where brighter colours represent more data points
+	landing there. You can also see the histograms, as histograms, by clicking the chart.</p>
+	<p>This approach has the effect of plotting the famous bifurcation diagram. To get a more
+	faithful representation, try increasing the number of iterations - 1000 is a good number,
+	although it may be a little slow.</p>
+	<p>Other logistic map plotters - <a href="logistic.html">Logistic Map Graph</a> and <a href="logisticpixels.html">Logistic Map Pixmap</a></p>
+    <p>Peter Corbett, 2014</p>
+    <script src="logistichisto.js"></script>
+  </body>
+</html>

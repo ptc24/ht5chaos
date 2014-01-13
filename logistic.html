@@ -1,0 +1,53 @@
+<html>
+<head><title>Logistic Map Graph</title></head>
+<!--<style>
+   body {
+    margin:0px;
+    padding:0px;
+    text-align:center;
+  }
+
+  canvas{
+    outline:0;
+    border:1px solid #000;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  </style>-->
+  </head>
+  <body>
+  	<h1>Logistic Map Graph</h1>
+    <canvas id='canvas'></canvas>
+	<p><input type="button" value="Reset" onclick="reset()"></input></p>
+	<p><b>Drawing</b></p>
+	<p>Width: <input type="text" id="gwidth" value="800" size="5"></input>
+	Height: <input type="text" id="gheight" value="400" size="5"></input>
+	Background: <input type="text" id="background" value="#fff" size="8">
+	Background Rectangle: <input type="text" id="backrect" value="#000" size="8">
+	Rainbow: <input type="checkbox" id="rainbow" checked="checked"></input>
+	Alpha (if Rainbow): <input type="text" id="alpha" value="0.3" size="5">
+	Line Colour (if not Rainbow): <input type="text" id="linecol" value="#000" size="8">
+	Line Width: <input type="text" id="linewidth" value="1" size="5">
+	</p>
+	<p><b>Parameters</b></p>
+	<p>Iterations shown: <input type="text" id="iterations" value="100" size="6"></input>
+	Iterations before start: <input type="text" id="inititers" value="0" size="6"></input>
+	Initial value: <input type="text" id="initval" value="0.6" size="12"></input>
+	r: <input type="text" id="r" value="3.7" size="12"></input>
+	<br>Variations: <input type="text" id="variations" value="10" size="6">
+	Initial value increment per variant: <input type="text" id="initvalinc" value="0.001" size="12"></input>
+	r increment per variant: <input type="text" id="rinc" value="0.0" size="12"></input>
+	<p><b>Description</b></p>
+	<p>A small script to plot graphs of the 
+	<a href="http://en.wikipedia.org/wiki/Logistic_map">logistic map</a> - the iteration of
+	<i>x</i><sub><i>n</i>+1</sub> = <i>rx<sub>n</sub></i>(1-<i>x<sub>n</sub></i>)</p>
+	<p>The logistic map is a very simple system, which can produce chaotic behaviour with the
+	right values of the parameter <i>r</i>. Sensible values of <i>r</i> range from 0 to 4; also,
+	the values of <i>x</i> range from 0 to 1. Confusingly, the graphs above plot <i>x</i> on the y-axis,
+	and <i>n</i> on the x-axis.
+ 	<p>Other logistic map plotters - <a href="logisticpixels.html">Logistic Map Pixmap</a> and <a href="logistichisto.html">Logistic Map Histograms and Bifurcation Diagram</a></p>
+    <p>Peter Corbett, 2014</p>
+    <script src="tinycolor.js"></script>
+    <script src="logistic.js"></script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<html>
+<head><title>Logistic Map Pixmap</title></head>
+<!--<style>
+   body {
+    margin:0px;
+    padding:0px;
+    text-align:center;
+  }
+
+  canvas{
+    outline:0;
+    border:1px solid #000;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  </style>-->
+  </head>
+  <body>
+  	<h1>Logistic Map Pixmap</h1>
+    <canvas id='canvas'></canvas>
+	<p id="status">Status</p>
+	<p><input type="button" value="Reset" onclick="reset()"></input></p>
+	<p>Width: <input type="text" id="gwidth" value="800" size="5"></input>
+	Height: <input type="text" id="gheight" value="600" size="5"></input></p>
+	<p>
+	Iterations: <input type="text" id="iterations" value="100" size="6"></input>
+	Min r: <input type="text" id="minr" value="0.0" size="13"></input>
+	Max r: <input type="text" id="maxr" value="4.0" size="13"></input>
+	Min x<sub>0</sub>: <input type="text" id="minx" value="0.0" size="13"></input>
+	Max x<sub>0</sub>: <input type="text" id="maxx" value="1.0" size="13"></input></p>
+	<p>A view of the <a href="http://en.wikipedia.org/wiki/Logistic_map">logistic map</a> - the iteration of
+	<i>x</i><sub><i>n</i>+1</sub> = <i>rx<sub>n</sub></i>(1-<i>x<sub>n</sub></i>)</p>
+	<p>This version displays different values of <i>r</i> along the x-axis, different values
+	of <i>x</i><sub>0</sub> along the y-axis, and represents <i>x<sub>n</sub></i> as pixel
+	colour - black = 0, white = 1. If you click and drag on the canvas you can zoom in. Try
+	altering the iteration count; working through values of 0 to 20 should give you an
+	idea of how the map works, and 100 iterations should be fine if you don't zoom in too far.</p>
+	<p>This diagram - like so many others - shows the connection between chaos and fractals. It
+	plots the outcomes from a chaotic system, and the result is a fractal... or at any rate tends
+	towards being fractal as the number of iterations increases. There's a lot of self-similarity
+	in the diagram.</p>
+	<p>Other logistic map plotters - <a href="logistic.html">Logistic Map Graph</a> and <a href="logistichisto.html">Logistic Map Histograms and Bifurcation Diagram</a></p>
+    <p>Peter Corbett, 2014</p>
+    <script src="logisticpixels.js"></script>
+  </body>
+</html>
