@@ -1,0 +1,79 @@
+<html>
+<head><title>Mandyn</title></head>
+<!--<style>
+   body {
+    margin:0px;
+    padding:0px;
+    text-align:center;
+  }
+
+  canvas{
+    outline:0;
+    border:1px solid #000;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  </style>-->
+  </head>
+  <body>
+  	<h1>Mandyn - Mandelbrot and Julia Set Dynamics</h1>
+    <canvas id='canvas'></canvas>
+	<p id="status">Status</p>
+	<p><input type="button" value="Reset" onclick="reset()"></input>
+	<input type="button" value="Reset Keeping Postion" onclick="reset_k()"></input>
+		<input type="button" value="Iterate" onclick="iterate()"></input>
+		<input type="button" value="Auto-Iterate" onclick="autoiterate()"></input>
+		<input type="button" value="Stop" onclick="stop()"></input></p>
+	<p>Width: <input type="text" id="gwidth" value="600" size="5"></input>
+	Height: <input type="text" id="gheight" value="400" size="5"></input></p>
+	<p>
+	Iterations: <input type="text" id="iterations" value="7" size="6"></input>
+	Min x: <input type="text" id="minx" value="-3.0" size="13"></input>
+	Max x: <input type="text" id="maxx" value="2.0" size="13"></input>
+	Min y: <input type="text" id="miny" value="-2.0" size="13"></input>
+	Max y: <input type="text" id="maxy" value="2.0" size="13"></input><br>
+	Juila Set: <input type="checkbox" id="julia"></input>
+	Juila x: <input type="text" id="jx" value="0.0" size="13"></input>
+	Julia y: <input type="text" id="jy" value="0.0" size="13"></input><br>
+	Colour Centre x: <input type="text" id="ccx" value="0.0" size="13"></input>
+	Colour Centre y: <input type="text" id="ccy" value="0.0" size="13"></input>
+	Click to Set: <input type="checkbox" id="clickcc"></input>
+	Hue is Magnitude: <input type="checkbox" id="colmag"></input>
+	Magnitude Shading: <input type="checkbox" id="shademag"></input>
+	Magnitude Saturation: <input type="checkbox" id="satmag"></input>
+	Hue Rotation: <input type="text" id="colrot" value="0" size="13"></input>
+	Iteration Time (ms): <input type="text" id="itertime" value="500" size="13"></input>
+	<br>
+	</p>
+	<p>Just a little bit different from the usual Mandelbrot set plotters. The usual
+	Mandelbrot set iterates <i>z</i><sub><i>n</i>+1</sub> = <i>z</i><sub><i>n</i></sub>
+	<sup>2</sup> + <i>c</i> (<i>z</i><sub>0</sub> = 0) until either the iteration "escapes" - i.e. the magnitude of <i>z</i>
+	gets over some threshold, often 4, or it until it looks like the iteration isn't going
+	to escape. The different positions on the plot refer to different values of <i>c</i>.</p>
+	<p>Mandyn is a little bit different - it looks at the iteration. The idea is that the
+	Mandelbrot set is telling something about a dynamical system, and let's see the dynamics!
+	On each iteration it looks up <i>z</i><sub><i>n</i></sub>. If <i>z</i><sub><i>n</i></sub>
+	has well and truly escaped, then it plots a shade from white to black to show when it 
+	escaped (there's a technique called Normalised Iteration Count to make this smooth). If 
+	<i>z</i><sub><i>n</i></sub> hasn't escaped, then by default it selects a hue based on
+	the argument of <i>z</i><sub><i>n</i></sub>, and a saturation or value based on the
+	magnitude; for high magnitudes, well on their way to escaping, the saturation will be low.
+	Alternatively, Mandyn can forget the argument and plot magnitude as hue.</p>
+	<p>You can make Mandyn step through the iterations automatically, and adjust the speed.
+	Like any good Mandelbrot program you can draw a rectangle to zoom in.
+	There's an option for setting the "colour centre" - this effectively subtracts a complex
+	number from <i>z</i><sub><i>n</i></sub> for the purposes of calculating the colour of the
+	pixel. "Click to Set" lets you click on the chart to set the colour centre - this
+	temporarily disables zooming.</p>
+	<p>Finally, there's an option to plot Julia sets; these use the same iteration as the
+	Mandelbrot, but instead of setting <i>z</i><sub>0</sub> = 0, each pixel represents
+	a different value of <i>z</i><sub>0</sub>. You have to set <i>c</i> yourself, using
+	"Julia x" and "Julia y". Hint: find a nice x and y on the Mandelbrot, and the Julia
+	set may well look a bit like the area around that. x=0.278 y=0.01 is a good place
+	to start, it's quite interesting to turn on Auto-Iterate. Don't forget to zoom
+	in! I find that experimenting with the colour centre is often good with Julia sets.</p>
+    <p>Peter Corbett, 2014</p>
+	<script src="tinycolor.js"></script>
+    <script src="mandyn.js"></script>
+  </body>
+</html>
