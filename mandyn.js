@@ -19,6 +19,7 @@ var shademag = 0;
 var satmag = 0;
 var colrot = 0;
 var itertime = 100;
+var record = 0;
 
 var drawrect = 0;
 var rectx = 0;
@@ -71,6 +72,11 @@ function readuncontroversial() {
 	satmag = document.getElementById("satmag").checked ? 1 : 0;
 	colrot = parseFloat(document.getElementById("colrot").value);
 	itertime = parseFloat(document.getElementById("itertime").value);
+	if(document.getElementById("record") == null) {
+		record = 0;
+	} else {
+		record = document.getElementById("record").checked ? 1 : 0;
+	}
 }
 
 function update(mod) {
@@ -264,6 +270,14 @@ function render(withprev) {
 	ctx.putImageData(img, 0, 0);
 	var e = document.getElementById("status");
 	e.innerHTML = "x=" + minx + " to " + maxx + " y=" + miny + " to " + maxy + " time " + (Date.now()-time); 
+	if(record == 1) record_image();
+}
+
+
+function record_image() {
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.open("POST","record_image",true);
+	xmlhttp.send(canvas.toDataURL());
 }
 
 function reset() {
