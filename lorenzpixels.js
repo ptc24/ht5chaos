@@ -46,6 +46,8 @@ var yv = [];
 var zv = [];
 
 var running = 0;
+var simtime = 0;
+var frames = 0;
 
 function readform() {
 	canvas.width = parseFloat(document.getElementById("gwidth").value);
@@ -130,6 +132,8 @@ function reset() {
 	sigmav = [];
 	rhov = [];
 	betav = [];
+	simtime = 0;
+	frames = 0;
 	for(var i=0;i<canvas.width;i++) {
 		xv.push([]);
 		yv.push([]);
@@ -154,6 +158,7 @@ function reset() {
 function iterate() {
 	var t = Date.now();
 	for(var cyc=0;cyc<perframe;cyc++) {
+		simtime += deltat;
 		for(var i=0;i<canvas.width;i++) {
 			for(var j=0;j<canvas.height;j++) {
 				var xx = xv[i][j];
@@ -165,8 +170,9 @@ function iterate() {
 			}
 		}
 	}
+	frames++;
 	var e = document.getElementById("status");
-	e.innerHTML = "Time per frame: " + (Date.now() - t);
+	e.innerHTML = "Time per frame: " + (Date.now() - t) + " Frames so far " + frames + " t " + simtime.toFixed(Math.ceil(-Math.log(deltat)/Math.LN10));
 	render();
 	if(running == 1) setTimeout(iterate, 10);
 }
