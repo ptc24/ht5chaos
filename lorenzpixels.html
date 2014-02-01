@@ -1,0 +1,40 @@
+<html>
+<head><title>Logistic Map Pixmap</title></head>
+  </head>
+  <body>
+  	<h1>Lorenz Pixmap</h1>
+    <canvas id='canvas'></canvas>
+	<p id="status">Status</p>
+	<p><input type="button" value="Reset" onclick="reset()"></input><input type="button" value="Iterate" onclick="iterate()"></input>
+	<input type="button" value="Auto-Iterate" onclick="autoiterate()"></input>
+	<input type="button" value="Stop" onclick="stop()"></input></p>
+	<p>Width: <input type="text" id="gwidth" value="800" size="5"></input>
+	Height: <input type="text" id="gheight" value="600" size="5"></input><br>
+	Colours: x from <input type="text" id="minx" value="-10" size="6"></input> to <input type="text" id="maxx" value="10" size="6"></input>
+	 y from <input type="text" id="miny" value="-28" size="6"></input> to <input type="text" id="maxy" value="28" size="6"></input>
+	 z from <input type="text" id="minz" value="-0" size="6"></input> to <input type="text" id="maxz" value="50" size="6"></input><br>
+	Time Step: <input type="text" id="deltat" value="0.001" size="8"></input>
+	Steps Per Frame: <input type="text" id="perframe" value="10" size="8"></input><br>
+	Sigma: <input type="text" id="sigma" value="10" size="8"></input>
+	Rho: <input type="text" id="rho" value="28" size="8"></input>
+	Beta: <input type="text" id="beta" value="2.666667" size="8"></input><br>
+	sigma = <input type="text" id="sigma0" value="10" size="8"></input> + screen_x (0-1) * <input type="text" id="sigmai" value="0" size="8"></input> + screen_y (0-1, bottom=0) * <input type="text" id="sigmaj" value="0" size="8"></input><br>
+	rho = <input type="text" id="rho0" value="28" size="8"></input> + screen_x (0-1) * <input type="text" id="rhoi" value="0" size="8"></input> + screen_y (0-1, bottom=0) * <input type="text" id="rhoj" value="0" size="8"></input><br>
+	beta = <input type="text" id="beta0" value="2.666667" size="8"></input> + screen_x (0-1) * <input type="text" id="betai" value="0" size="8"></input> + screen_y (0-1, bottom=0) * <input type="text" id="betaj" value="0" size="8"></input><br>
+
+	x<sub>0</sub> = <input type="text" id="x0" value="-1" size="8"></input> + screen_x (0-1) * <input type="text" id="xi" value="0" size="8"></input> + screen_y (0-1, bottom=0) * <input type="text" id="xj" value="0" size="8"></input><br>
+	y<sub>0</sub> = <input type="text" id="y0" value="-56" size="8"></input> + screen_x * <input type="text" id="yi" value="112" size="8"></input> + screen_y (0-1, bottom=0) * <input type="text" id="yj" value="0" size="8"></input><br>
+	z<sub>0</sub> = <input type="text" id="z0" value="-50" size="8"></input> + screen_x * <input type="text" id="zi" value="0" size="8"></input> + screen_y (0-1, bottom=0) * <input type="text" id="zj" value="175" size="8"></input><br>
+	
+	<!-- This is commented out by default, as you need to be running with an appropriate
+	server -->
+	<br>Recording: <input type="checkbox" id="record"></input>
+	</p>
+	<p>A take on the <a href="http://en.wikipedia.org/wiki/Lorenz_system">Lorenz System</a> - a classic study in chaos theory. Rather than representing the x, y and z variables as positions, this code represents them
+	as RGB components; x as red, y as green, z as blue. You can adjust the ranges of x, y and z that the colour components map on to. Each pixel represents a single Lorentz system, and the position on the chart
+	represents different initial conditions and/or parameters. Tweak the parameters, click Reset, then click Auto-Iterate to get the thing moving. Click Stop to pause, click on the chart to look at the
+	current and initial conditions and the parameters at that point on the chart, then click Auto-Iterate to restart.</p>
+    <p>Peter Corbett, 2014</p>
+    <script src="lorenzpixels.js"></script>
+  </body>
+</html>
