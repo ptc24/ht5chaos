@@ -1,25 +1,31 @@
 <html>
-<head><title>Lorenz Pixmap</title></head>
-  </head>
+<head><title>Lorenz (and related) Pixmap</title>
+<meta charset="UTF-8">
+</head>
   <body>
-  	<h1>Lorenz Pixmap</h1>
+  	<h1>Lorenz (and related) Pixmap</h1>
     <canvas id='canvas'></canvas>	<canvas id='canvas2' oncontextmenu='return false;'></canvas>
 
 	<p id="status">Status</p>
 	<p><input type="button" value="Reset" onclick="reset()"></input><input type="button" value="Iterate" onclick="iterate()"></input>
-	<input type="button" value="Auto-Iterate" onclick="autoiterate()"></input>
-	<input type="button" value="Stop" onclick="stop()"></input></p>
+	<input type="button" value="Auto-Iterate" onclick="autoiterate()"></input><input type="button" value="Reset Camera" onclick="reset_cam()"></input>
+	<input type="button" value="Stop" onclick="stop()"></input><br>
+	System: <select id="system" onchange="setsystemform()">
+		<option value="0">Lorenz</option>
+		<option value="1">Rössler</option>
+		<option value="2">Rabinovich–Fabrikant</option>
+		<option value="3">Chua</option>
+	</select>
+	</p>
 	<p>Width: <input type="text" id="gwidth" value="800" size="5"></input>
 	Height: <input type="text" id="gheight" value="600" size="5"></input><br>
 	Colours: x from <input type="text" id="minx" value="-10" size="6"></input> to <input type="text" id="maxx" value="10" size="6"></input>
 	 y from <input type="text" id="miny" value="-28" size="6"></input> to <input type="text" id="maxy" value="28" size="6"></input>
 	 z from <input type="text" id="minz" value="-0" size="6"></input> to <input type="text" id="maxz" value="50" size="6"></input><br>
 	Time Step: <input type="text" id="deltat" value="0.001" size="8"></input>
-	Steps Per Frame: <input type="text" id="perframe" value="10" size="8"></input><br>
-	sigma = <input type="text" id="sigma0" value="10" size="8"></input> + screen_x (0-1) * <input type="text" id="sigmai" value="0" size="8"></input> + screen_y (0-1, bottom=0) * <input type="text" id="sigmaj" value="0" size="8"></input><br>
-	rho = <input type="text" id="rho0" value="28" size="8"></input> + screen_x (0-1) * <input type="text" id="rhoi" value="0" size="8"></input> + screen_y (0-1, bottom=0) * <input type="text" id="rhoj" value="0" size="8"></input><br>
-	beta = <input type="text" id="beta0" value="2.666667" size="8"></input> + screen_x (0-1) * <input type="text" id="betai" value="0" size="8"></input> + screen_y (0-1, bottom=0) * <input type="text" id="betaj" value="0" size="8"></input><br>
-
+	Steps Per Frame: <input type="text" id="perframe" value="10" size="8"></input></p>
+	<p id="params">
+	</p><p>
 	x<sub>0</sub> = <input type="text" id="x0" value="-1" size="8"></input> + screen_x (0-1) * <input type="text" id="xi" value="0" size="8"></input> + screen_y (0-1, bottom=0) * <input type="text" id="xj" value="0" size="8"></input><br>
 	y<sub>0</sub> = <input type="text" id="y0" value="-56" size="8"></input> + screen_x * <input type="text" id="yi" value="112" size="8"></input> + screen_y (0-1, bottom=0) * <input type="text" id="yj" value="0" size="8"></input><br>
 	z<sub>0</sub> = <input type="text" id="z0" value="-50" size="8"></input> + screen_x * <input type="text" id="zi" value="0" size="8"></input> + screen_y (0-1, bottom=0) * <input type="text" id="zj" value="175" size="8"></input><br>
@@ -36,7 +42,13 @@
 	represents different initial conditions and/or parameters. Tweak the parameters, click Reset, then click Auto-Iterate to get the thing moving. Click Stop to pause, click on the chart to look at the
 	current and initial conditions and the parameters at that point on the chart - and to plot the Lorenz attractor at that point, then click Auto-Iterate to restart. Click and drag with the left or
 	right mouse button (they do different things) to rotate and zoom the view of the Lorenz attractor.</p>
-    <p>Peter Corbett, 2014</p>
+    <p>There's also the option to use different sets of differential equations. I've also included the
+	<a href="http://en.wikipedia.org/wiki/R%C3%B6ssler_attractor">Rössler system</a>, the 
+	<a href="http://en.wikipedia.org/wiki/Rabinovich%E2%80%93Fabrikant_equations">Rabinovich–Fabrikant Equations</a>
+	and a version of the equations describing 
+	<a href="http://en.wikipedia.org/wiki/Chua%27s_circuit">Chua's Circuit</a> - taking the exact equations from 
+	<a href="http://www.chuacircuits.com/sim.php">this simulation</a>.
+	<p>Peter Corbett, 2014</p>
     <script src="lorenzpixels.js"></script>
   </body>
 </html>
