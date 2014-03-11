@@ -1,0 +1,65 @@
+<html>
+<head><title>Spatial Kuramoto Model</title></head>
+  </head>
+  <body>
+  	<h1>Spatial Kuramoto Model</h1>
+    <canvas id='canvas'></canvas>
+
+	<p id="status">Status</p>
+	<p><input type="button" value="Reset" onclick="reset()"></input><input type="button" value="Iterate" onclick="iterate()"></input>
+	<input type="button" value="Auto-Iterate" onclick="autoiterate()"></input>
+	<input type="button" value="Stop" onclick="stop()"></input></p>
+	<p>Width: <input type="text" id="gwidth" value="200" size="5"></input>
+	Height: <input type="text" id="gheight" value="200" size="5"></input><br>
+
+	Time Step: <input type="text" id="deltat" value="0.05" size="8"></input>
+	Steps Per Frame: <input type="text" id="perframe" value="2" size="8"></input><br>
+	<table>
+	<tr><td>theta<sub>0</sub></td><td><input type="text" id="tstr" value="Math.random()*Math.PI*2" size="80"></input></td></tr>
+	<tr><td>omega</td><td><input type="text" id="ostr" value="y" size="80"></input></td></tr>
+	<tr><td>k</td><td><input type="text" id="kstr" value="1" size="80"></input></td></tr>
+	<tr><td>noise</td><td><input type="text" id="nstr" value="0" size="80"></input></td></tr>
+	</table>
+	<!--<b>Side Window</b> Colour iterations: <input type="text" id="citer" value="0" size="6"></input> <input type="button" value="Iterate" onclick="citerate()"></input></input>
+	<input type="button" value="Auto-Iterate" onclick="autociterate()"></input>-->
+	<!-- This is commented out by default, as you need to be running with an appropriate
+	server -->
+	<!--<br>Recording: <input type="checkbox" id="record"></input>-->
+	</p>
+	<p>
+	The <a href="http://en.wikipedia.org/wiki/Kuramoto_model">Kuramoto Model</a> is a model of synchronization.
+	This application looks at a set of Kuramoto oscillators in a grid pattern; each oscillator attempts
+	to synchronize with the oscillators 4-adjacent to it. The phase of each oscillator (theta) is represented
+	by hue. Omega is the "natural frequency" of each oscillator, k controls how strongly the oscillators
+	attempt to synchronize, "noise" is a noise term - at each time step, a random number from -0.5 to 0.5
+	is generated and multiplied by the noise parameter, to give the noise term in the differential equation.</p>
+	<p>
+	As there are lots of ways to set up the initial values of theta, and the various parameters, the
+	contents of each parameter field are passed to eval for evaluation. You can use the variables x and y -
+	these range from 0 to 1, where (0, 0) is the bottom left. As well as the standard javascript functions,
+	there is also rnd_gauss() which generates a random number according to a standard Gaussian distribution,
+	and rnd_cauchy() that generates a random number from a Cauchy distribution. Some examples, good for
+	copying and pasting, applicable to various fields, are below. Remember to press Reset after changing the
+	parameters.</p>
+	<p><tt>
+	Math.random()*Math.PI*2<br>
+	x<br>
+	y<br>
+	y*y<br>
+	1.0<br>
+	0.0<br>
+	-1.0<br>
+	y+(.5*(0.5-Math.random()))<br>
+	xx = x - 0.5; yy = y - 0.5; Math.sqrt((xx*xx)+(yy*yy))<br>
+	((Math.sin(10*x) + Math.sin(10*y))/4)<br>
+	((Math.sin(10*x) + Math.sin(10*y))/4)+(.5*(0.5-Math.random()))<br>
+	xx = x - 0.5; yy = y - 0.5; Math.cos(20*Math.sqrt((yy*yy)+(xx*xx)))<br>
+	rnd_gauss()/4<br>
+	rnd_cauchy()/10<br>
+	</tt>
+	</p>
+    <p>Peter Corbett, 2014</p>
+    <script src="tinycolor.js"></script>
+    <script src="kuramoto.js"></script>
+  </body>
+</html>
