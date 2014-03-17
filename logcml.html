@@ -1,0 +1,62 @@
+<html>
+<head><title>Coupled Logistic Map Lattice</title></head>
+  </head>
+  <body>
+  	<h1>Coupled Logistic Map Lattice</h1>
+    <canvas id='canvas'></canvas>
+
+	<p id="status">Status</p>
+	<p><input type="button" value="Reset" onclick="reset()"></input><input type="button" value="Iterate" onclick="iterate()"></input>
+	<input type="button" value="Auto-Iterate" onclick="autoiterate()"></input>
+	<input type="button" value="Stop" onclick="stop()"></input></p>
+	<p>Width: <input type="text" id="gwidth" value="600" size="5"></input>
+	Height: <input type="text" id="gheight" value="600" size="5"></input><br>
+
+	<table>
+	<tr><td>x<sub>0</sub></td><td><input type="text" id="xstr" value="Math.random()" size="80"></input></td></tr>
+	<tr><td>r</td><td><input type="text" id="rstr" value="3+y" size="80"></input></td></tr>
+	<tr><td>k</td><td><input type="text" id="kstr" value="x" size="80"></input></td></tr>
+	<tr><td>noise</td><td><input type="text" id="nstr" value="0" size="80"></input></td></tr>
+	</table>
+	<!--<b>Side Window</b> Colour iterations: <input type="text" id="citer" value="0" size="6"></input> <input type="button" value="Iterate" onclick="citerate()"></input></input>
+	<input type="button" value="Auto-Iterate" onclick="autociterate()"></input>-->
+	<!-- This is commented out by default, as you need to be running with an appropriate
+	server -->
+	<!--<br>Recording: <input type="checkbox" id="record"></input>-->
+	</p>
+	<p>
+	I <i>think</i> this is a <a href="http://en.wikipedia.org/wiki/Coupled_map_lattice">Coupled Map Lattice</a>
+	of the <a href="">Logistic Map</a>. Either way it's pretty. The logistic map is 
+	<i>x</i><sub><i>n</i>+1</sub> = <i>rx<sub>n</sub></i>(<i>x<sub>n</sub></i>-1), and in this example,
+	we're representing <i>x</i> as a shade from black=0 to white=1. The twist here is that on each iteration,
+	instead of using the result straight away, it processes the results to add smoothing and then noise.
+	The smoothing step: it takes the pixel itself and the pixels above, below, left and right of it (if
+	they exist), and calculates an average. It then sets the pixel value to <i>k</i> times this, plus 1-<i>k</i>
+	times the value before averaging. Finally, noise is added, by generating a number from 0 to 1,
+	multiplying by <i>noise</i> parameter, and adding that to (1-<i>noise</i>) times the pixel value.</p> 
+	
+	<p>
+	As there are lots of ways to set up the initial values of x, and the various parameters, the
+	contents of each parameter field are passed to eval for evaluation. You can use the variables x and y -
+	these range from 0 to 1, where (0, 0) is the bottom left. Yes, I know, I'm using x for the x-coordinate
+	and also the value of each pixel. Sorry. As well as the standard javascript functions,
+	there is also rnd_gauss() which generates a random number according to a standard Gaussian distribution,
+	and rnd_cauchy() that generates a random number from a Cauchy distribution. Some examples, good for
+	copying and pasting, applicable to various fields, are below. Remember to press Reset after changing the
+	parameters.</p>
+	<p><tt>
+	Math.random()<br>
+	x+((1-x)*Math.random()*y)<br>
+	x<br>
+	y<br>
+	3.0+y<br>
+	3.65<br>
+	xx = x - 0.5; yy = y - 0.5; Math.random()*Math.sqrt((xx*xx)+(yy*yy))*1.4<br>
+	Math.random()*x*x*x<br>
+	4 - (y*y)<br>
+	</tt>
+	</p>
+    <p>Peter Corbett, 2014</p>
+    <script src="logcml.js"></script>
+  </body>
+</html>
