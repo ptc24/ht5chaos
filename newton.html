@@ -1,0 +1,67 @@
+<html>
+<head><title>Newton</title></head>
+<!--<style>
+   body {
+    margin:0px;
+    padding:0px;
+    text-align:center;
+  }
+
+  canvas{
+    outline:0;
+    border:1px solid #000;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  </style>-->
+  </head>
+  <body>
+  	<h1>Newton Fractal Dynamics</h1>
+    <canvas id='canvas'></canvas>
+	<p id="status">Status</p>
+	<p><input type="button" value="Reset" onclick="reset()"></input>
+	<input type="button" value="Reset Keeping Postion" onclick="reset_k()"></input>
+		<input type="button" value="Iterate" onclick="iterate()"></input>
+		<input type="button" value="Auto-Iterate" onclick="autoiterate()"></input>
+		<input type="button" value="Stop" onclick="stop()"></input></p>
+	<p>Width: <input type="text" id="gwidth" value="400" size="5"></input>
+	Height: <input type="text" id="gheight" value="400" size="5"></input></p>
+	<p>
+	Roots: <input type="text" id="roots" value="[[0,1],[1,0],[0,-1],[-1,0]]" size="80"></input>
+	<br>
+	Iterations: <input type="text" id="iterations" value="1" size="6"></input>
+	Min x: <input type="text" id="minx" value="-2.0" size="13"></input>
+	Max x: <input type="text" id="maxx" value="2.0" size="13"></input>
+	Min y: <input type="text" id="miny" value="-2.0" size="13"></input>
+	Max y: <input type="text" id="maxy" value="2.0" size="13"></input><br>
+	Colour Centre x: <input type="text" id="ccx" value="0.0" size="13"></input>
+	Colour Centre y: <input type="text" id="ccy" value="0.0" size="13"></input>
+	Click to Set: <input type="checkbox" id="clickcc"></input>
+	Hue is Magnitude: <input type="checkbox" id="colmag"></input>
+	Magnitude Shading: <input type="checkbox" id="shademag"></input>
+	Magnitude Saturation: <input type="checkbox" id="satmag"></input>
+	Hue Rotation: <input type="text" id="colrot" value="0" size="13"></input>
+	Iteration Time (ms): <input type="text" id="itertime" value="500" size="13"></input>
+	<br>
+	<!-- This is commented out by default, as you need to be running with an appropriate
+	server -->
+	<!-- Recording: <input type="checkbox" id="record"></input> -->
+	</p>
+	<p>An adaptation of <a href="mandyn.html">Mandyn</a> to the problem of
+	<a href="http://en.wikipedia.org/wiki/Newton_fractal">Newton Fractals</a>, largely inspired by
+	<a href="http://www.chiark.greenend.org.uk/~sgtatham/newton/">this page</a> about it. As with Mandyn,
+	the idea is to watch the fractal grow iteration by iteration, representing the value at each point
+	using colour.</p>
+	<p>This particular fractal uses the Newton-Raphson method to find roots of a complex polynomial,
+	which for convenience is (z-c<sub>0</sub>)(z-c<sub>1</sub>)... - the idea is that c<sub>0</sub>
+	are the roots of that polynomial. The "Roots" variable above represents the values of c<sub>0</sub>
+	as an array of arrays, where each inner array contains the real and imaginary part of c<sub>n</sub>.
+	So [[0,1],[1,0],[0,-1],[-1,0]] represents the polynomial (z-i)(z-1)(z+i)(z+1). The value of
+	Roots is sent to eval, so you can include javascript code there to generate your roots for you
+	if you want.
+	</p>
+    <p>Peter Corbett, 2014</p>
+	<script src="tinycolor.js"></script>
+    <script src="newton.js"></script>
+  </body>
+</html>
